@@ -1,13 +1,21 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <br>
+    <!-- <router-link to="HomePage" tag="button">首页</router-link> -->
+    <button @click="goHomePage">首页</button>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    goHomePage() {
+      this.$router.push('/HomePage')
+    }
+  }
 }
 </script>
 
