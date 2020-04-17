@@ -1,9 +1,13 @@
 <template>
   <div >
-		<a class="title" href="www.baidu.com">项目列表</a>
+    <!-- <button @click="goHomePage">首页</button>
+    <button @click="goBack">返回</button> -->
+		<!-- <a class="title" href="www.baidu.com">项目列表</a>
     <a class="title" href="www.baidu.com">项目详情</a>
-    <a class="title" href="www.baidu.com">项目数据</a>
+    <a class="title" href="www.baidu.com">项目数据</a> -->
+    
 		<h1>{{HomeMsg}}</h1>
+    <!-- <h2>{{$route.params.userId}}</h2> -->
   </div>
 </template>
 
@@ -12,7 +16,8 @@
 	  name: 'HomePage',
 	  data () {
 	    return {
-	      HomeMsg: 'This is the HomePage！'
+        HomeMsg: '这是首页',
+        // userId: $route.params.userId
 	    }
 	  }
 	}
@@ -20,21 +25,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: white;
-}
-.title {
-  background-color: #398DEE;
-}
+
 </style>
