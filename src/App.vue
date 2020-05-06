@@ -64,7 +64,11 @@
     </el-menu-item>
     <el-submenu index="2">
       <template slot="title">项目列表</template>
-      <el-menu-item index="2-1">项目1</el-menu-item>
+      <el-menu-item index="2-1">
+        <tab-bar-item path="Projects" style="text-align:left">
+          <div slot="item-text">项目1</div>
+        </tab-bar-item>
+      </el-menu-item>
       <el-menu-item index="2-2">项目2</el-menu-item>
       <el-menu-item index="2-3">项目3</el-menu-item>
       <el-submenu index="2-4">
