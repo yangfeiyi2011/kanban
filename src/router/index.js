@@ -9,8 +9,13 @@ const HomePage = () => import('@/components/HomePage')
 const Profile = () => import('@/components/Profile')
 const Projects = () => import('@/components/Projects')
 const About = () => import('@/components/About')
+const Login = () => import('@/components/Login')
 
 Vue.use(Router)
+const VueRouterPush = Router.prototype.push
+Router.prototype.push = function push (to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
 
 export default new Router({
   routes: [
@@ -43,6 +48,11 @@ export default new Router({
       path: '/About',
       name: 'About',
       component: About
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: Login
     },
   ],
   mode: 'history'

@@ -90,6 +90,11 @@
       <div slot="item-text">关于</div>
       </tab-bar-item>
     </el-menu-item>
+    <el-menu-item index="6">
+      <tab-bar-item path="Login">
+      <div slot="item-text">登录</div>
+      </tab-bar-item>
+    </el-menu-item>
   </el-menu>
  </div>
   

@@ -1,0 +1,65 @@
+<template>
+  <!-- <div >
+	<h1>登陆</h1>
+  </div> -->
+  <div>
+    <p>用户名:<br>
+    <el-input v-model="username" placeholder="请输入用户名"></el-input>
+    <p>密码:<br>
+    <el-input type="password" v-model="passwd" placeholder="请输入密码"></el-input></p>
+    <el-button v-on:click="login">登录</el-button>
+    <p v-show="loginSuccess">登录成功！</p>
+  </div>
+</template>
+
+<script>
+	import { request } from '../common/axios'
+	export default {
+	  name: 'Login',
+	  data () {
+	    return {
+        username:"",
+        passwd:"",
+        loginSuccess:false,
+			}
+    },
+    methods :{
+      login() {
+        request({
+				url:'/api/v1/login',
+				method: 'POST',
+				data: {
+					username: this.username,
+					password: this.passwd,
+				}
+				}).then(res =>{
+          if (res.data.result == 0) {
+            this.loginSuccess = true
+          }
+				}).catch(err => {
+					console.log(err)
+					this.loginSuccess = false
+				})
+      },
+      keyDown(e) {
+        if(e.keyCode == 13) {
+          this.login()
+        }
+      }
+    },
+    mounted() {
+      window.addEventListener('keydown', this.keyDown)
+    },
+    destroyed() {
+      window.removeEventListener('keydown', this.keyDown, false)
+    }
+	}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+  .el-input {
+    width: 200px;
+    height: 30px
+  }
+</style>
