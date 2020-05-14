@@ -92,7 +92,8 @@
     </el-menu-item>
     <el-menu-item index="6">
       <tab-bar-item path="Login">
-      <div slot="item-text">登录</div>
+      <div v-if="$store.state.username != ''" slot="item-text">{{$store.state.username}}</div>
+      <div v-else slot="item-text">登录</div>
       </tab-bar-item>
     </el-menu-item>
   </el-menu>

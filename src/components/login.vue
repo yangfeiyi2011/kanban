@@ -3,43 +3,30 @@
 	<h1>登陆</h1>
   </div> -->
   <div>
-    <p>用户名:<br>
-    <el-input v-model="username" placeholder="请输入用户名"></el-input>
-    <p>密码:<br>
-    <el-input type="password" v-model="passwd" placeholder="请输入密码"></el-input></p>
-    <el-button v-on:click="login">登录</el-button>
-    <p v-show="loginSuccess">登录成功！</p>
+    <dir v-show="!$store.state.userstatus">
+      <p>用户名:<br>
+      <el-input v-model="username" placeholder="请输入用户名"></el-input>
+      <p>密码:<br>
+      <el-input type="password" v-model="passwd" placeholder="请输入密码"></el-input></p>
+      <el-button v-on:click="login">登录</el-button>
+    </dir>
+    
+    <p v-show="$store.state.userstatus">登录成功！</p>
   </div>
 </template>
 
 <script>
-	import { request } from '../common/axios'
 	export default {
 	  name: 'Login',
 	  data () {
 	    return {
         username:"",
         passwd:"",
-        loginSuccess:false,
 			}
     },
     methods :{
       login() {
-        request({
-				url:'/api/v1/login',
-				method: 'POST',
-				data: {
-					username: this.username,
-					password: this.passwd,
-				}
-				}).then(res =>{
-          if (res.data.result == 0) {
-            this.loginSuccess = true
-          }
-				}).catch(err => {
-					console.log(err)
-					this.loginSuccess = false
-				})
+        this.$store.dispatch('login',{'username':this.username, 'passwd':this.passwd})
       },
       keyDown(e) {
         if(e.keyCode == 13) {
